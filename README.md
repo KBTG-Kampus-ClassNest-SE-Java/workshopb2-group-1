@@ -45,7 +45,7 @@ export ENABLED_FEATURE_PROMOTION_LIST_API=false
 ### STEP0: Initial Repository
 
 1. ใช้ repository ที่เตรียมไว้ให้ตามกลุ่ม
-2. Replace all `<group-id>` ด้วย กลุ่มตัวเอง e.g `group-1`
+2. Replace all `group-1` ด้วย กลุ่มตัวเอง e.g `group-1`
 1. ทำการเพิ่มสมาชิกใน Github ของทีมเพื่อให้สามารถเข้าถึง Repository ได้
 1. ไปที่ Settings > Collaborators and teams > Manage access
 
