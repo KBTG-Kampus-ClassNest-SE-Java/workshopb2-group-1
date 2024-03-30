@@ -1,7 +1,6 @@
 package com.kampus.kbazaar.cart;
 
 import com.kampus.kbazaar.promotion.PromotionApplyCartRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
