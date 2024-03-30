@@ -1,12 +1,9 @@
 package com.kampus.kbazaar.cart;
 
-import com.kampus.kbazaar.product.Product;
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -28,6 +25,4 @@ public class CartItemResponse {
     private BigDecimal discount;
 
     private String promotionCodes;
-
-
 }
