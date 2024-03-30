@@ -15,6 +15,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 
 class ProductServiceTest {
 
@@ -94,5 +97,31 @@ class ProductServiceTest {
 
         // Assertions
         assertThrows(NotFoundException.class, () -> productService.getBySku("NonExistingSKU"));
+    }
+
+    @Test
+    @DisplayName("should be able to get all products")
+    void shouldBeAbleToGetAllProductsPagination() {
+        // Mock data
+        Product product1 =
+                new Product(
+                        1L,
+                        "Google Pixel 5",
+                        "MOBILE-GOOGLE-PIXEL-5",
+                        new BigDecimal(12990.75),
+                        100);
+        Product product2 =
+                new Product(2L, "Coca-Cola", "BEV-COCA-COLA", new BigDecimal(20.75), 150);
+        Page<Product> productList = new PageImpl(List.of(product1));
+
+        // Mock repository method
+        when(productRepository.findAll(PageRequest.of(0, 1))).thenReturn(productList);
+
+        // Call service method
+        List<ProductResponse> result = productService.getAll(0, 1);
+
+        // Assertions
+        assertEquals(1, result.size());
+        assertEquals("Google Pixel 5", result.get(0).name());
     }
 }
