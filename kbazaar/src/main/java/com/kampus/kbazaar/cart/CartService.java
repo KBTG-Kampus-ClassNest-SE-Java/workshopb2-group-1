@@ -1,6 +1,7 @@
 package com.kampus.kbazaar.cart;
 
 import com.kampus.kbazaar.promotion.PromotionApplyCartRequest;
+import com.kampus.kbazaar.promotion.PromotionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -38,7 +39,4 @@ public class CartService {
 
         return cartResponseDto;
     }
-
-
-    
 }
