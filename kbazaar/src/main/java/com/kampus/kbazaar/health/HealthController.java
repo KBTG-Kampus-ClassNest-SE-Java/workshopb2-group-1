@@ -20,6 +20,6 @@ public class HealthController {
                             schema = @Schema(implementation = String.class)))
     @GetMapping("/health")
     public String health() {
-        return "{ \"status\": \"alive-aorjoa\" }";
+        return "{ \"status\": \"alive-group1\" }";
     }
 }
