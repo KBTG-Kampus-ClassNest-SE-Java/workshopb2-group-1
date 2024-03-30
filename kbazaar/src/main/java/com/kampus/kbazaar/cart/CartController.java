@@ -20,7 +20,9 @@ public class CartController {
     }
 
     @PostMapping("/carts/{username}/promotions")
-    public CartResponse applyCartPromotion(@PathVariable String username, @RequestBody PromotionApplyCartRequest promotionApplyCartRequest) {
+    public CartResponse applyCartPromotion(
+            @PathVariable String username,
+            @RequestBody PromotionApplyCartRequest promotionApplyCartRequest) {
         return cartService.applyCartPromotion(username, promotionApplyCartRequest);
     }
 }
