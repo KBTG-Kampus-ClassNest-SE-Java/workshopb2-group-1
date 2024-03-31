@@ -2,8 +2,7 @@ package com.kampus.kbazaar.cartitem;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.kampus.kbazaar.cart.Cart;
 import com.kampus.kbazaar.cart.CartRepository;
@@ -56,5 +55,23 @@ class CartItemServiceTest {
         cartItemService.addCartItem(cartItem);
 
         verify(cartItemRepository).save(any());
+    }
+
+    @Test
+    void shouldGetCartByUsernameWhenDataIsNotPresent() {
+        Cart cart = new Cart();
+        cart.setId(1L);
+        cart.setUsername("mockusername");
+        cart.setDiscount(BigDecimal.ZERO);
+        cart.setTotalDiscount(BigDecimal.ZERO);
+        cart.setPromotionCodes("promo-code");
+        cart.setSubtotal(BigDecimal.ZERO);
+        cart.setGrandTotal(BigDecimal.ZERO);
+
+        when(cartRepository.getCartByUsername(anyString())).thenReturn(Optional.empty());
+        when(cartRepository.save(any())).thenReturn(cart);
+
+        cartItemService.getCartByUsername("username");
+        verify(cartRepository, times(1)).save(any());
     }
 }
