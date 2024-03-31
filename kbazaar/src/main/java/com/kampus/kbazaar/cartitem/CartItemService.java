@@ -46,7 +46,8 @@ public class CartItemService {
                             .map(BigDecimal::new)
                             .reduce(BigDecimal.ZERO, BigDecimal::add));
 
-            cartResponse.setGrandTotal(cartResponse.getSubtotal().subtract(cartResponse.getTotalDiscount()));
+            cartResponse.setGrandTotal(
+                    cartResponse.getSubtotal().subtract(cartResponse.getTotalDiscount()));
 
         } else {
             Cart cart = new Cart();
