@@ -32,7 +32,7 @@ import org.springframework.test.web.servlet.MockMvc;
                 @ComponentScan.Filter(
                         type = FilterType.ASSIGNABLE_TYPE,
                         classes = JwtAuthFilter.class))
-public class CartControllerTest {
+class CartControllerTest {
 
     @Autowired private MockMvc mockMvc;
 
@@ -46,13 +46,13 @@ public class CartControllerTest {
     }
 
     @Test
-    public void getCart_ReturnsOk() throws Exception {
+    void getCart_ReturnsOk() throws Exception {
         mockMvc.perform(get("/api/v1/carts").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getCards_ReturnsCorrectResponse() throws Exception {
+    void getCards_ReturnsCorrectResponse() throws Exception {
         when(cartService.getAllCart())
                 .thenReturn(
                         List.of(
