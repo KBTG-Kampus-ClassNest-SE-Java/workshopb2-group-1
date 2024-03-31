@@ -1,33 +1,29 @@
 package com.kampus.kbazaar.cartitem;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
+
 import com.kampus.kbazaar.cart.Cart;
 import com.kampus.kbazaar.cart.CartRepository;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
-
 @ExtendWith(MockitoExtension.class)
 class CartItemServiceTest {
 
-    @InjectMocks
-    private CartItemService cartItemService;
+    @InjectMocks private CartItemService cartItemService;
 
-    @Mock
-    private CartItemRepository cartItemRepository;
+    @Mock private CartItemRepository cartItemRepository;
 
-    @Mock
-    private CartRepository cartRepository;
+    @Mock private CartRepository cartRepository;
 
     @Test
     void shouldAddCartItem() {
