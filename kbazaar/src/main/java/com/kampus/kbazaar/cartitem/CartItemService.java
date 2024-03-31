@@ -6,7 +6,6 @@ import com.kampus.kbazaar.cart.CartResponse;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -59,10 +58,10 @@ public class CartItemService {
             }
 
             cartResponse.setGrandTotal(
-                    cartResponse.getSubtotal()
+                    cartResponse
+                            .getSubtotal()
                             .subtract(cartResponse.getTotalDiscount())
-                            .add(cartResponse.getShippingFee())
-            );
+                            .add(cartResponse.getShippingFee()));
 
         } else {
             Cart cart = new Cart();
