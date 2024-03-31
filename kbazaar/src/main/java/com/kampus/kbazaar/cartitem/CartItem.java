@@ -1,6 +1,5 @@
 package com.kampus.kbazaar.cartitem;
 
-import com.kampus.kbazaar.product.ProductResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

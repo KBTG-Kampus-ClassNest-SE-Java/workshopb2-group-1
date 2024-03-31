@@ -3,18 +3,16 @@ package com.kampus.kbazaar.cartitem;
 import com.kampus.kbazaar.cart.Cart;
 import com.kampus.kbazaar.cart.CartRepository;
 import com.kampus.kbazaar.cart.CartResponse;
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CartItemService {
 
     private final CartItemRepository cartItemRepository;
     private final CartRepository cartRepository;
-
 
     public CartItemService(CartItemRepository cartItemRepository, CartRepository cartRepository) {
         this.cartItemRepository = cartItemRepository;
@@ -34,24 +32,25 @@ public class CartItemService {
             // set items
             cartResponse.setItems(cartItemResponseList);
 
-
             // set response
-            cartResponse.setTotalDiscount(cartItemResponseList.stream()
-                    .map(CartItemResponse::discount)
-                    .map(BigDecimal::new)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add)
-                    .add(cartResponse.getDiscount()));
+            cartResponse.setTotalDiscount(
+                    cartItemResponseList.stream()
+                            .map(CartItemResponse::discount)
+                            .map(BigDecimal::new)
+                            .reduce(BigDecimal.ZERO, BigDecimal::add)
+                            .add(cartResponse.getDiscount()));
 
-            cartResponse.setSubtotal(cartItemResponseList.stream()
-                    .map(CartItemResponse::price)
-                    .map(BigDecimal::new)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add));
+            cartResponse.setSubtotal(
+                    cartItemResponseList.stream()
+                            .map(CartItemResponse::price)
+                            .map(BigDecimal::new)
+                            .reduce(BigDecimal.ZERO, BigDecimal::add));
 
-            cartResponse.setGrandTotal(cartItemResponseList.stream()
-                    .map(CartItemResponse::price)
-                    .map(BigDecimal::new)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add));
-
+            cartResponse.setGrandTotal(
+                    cartItemResponseList.stream()
+                            .map(CartItemResponse::price)
+                            .map(BigDecimal::new)
+                            .reduce(BigDecimal.ZERO, BigDecimal::add));
 
         } else {
             Cart cart = new Cart();
@@ -68,8 +67,9 @@ public class CartItemService {
     }
 
     public List<CartItemResponse> getAllItemsByUsername(String username) {
-        return cartItemRepository.findByUsername(username)
-                .stream().map(CartItem::toResponse).toList();
+        return cartItemRepository.findByUsername(username).stream()
+                .map(CartItem::toResponse)
+                .toList();
     }
 
     public CartResponse addCartItem(CartItem cartItem) {
@@ -93,5 +93,4 @@ public class CartItemService {
 
         return cartResponse;
     }
-
 }

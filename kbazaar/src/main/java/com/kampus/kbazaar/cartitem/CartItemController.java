@@ -17,9 +17,7 @@ public class CartItemController {
 
     @PostMapping("/carts/{username}/items")
     public ResponseEntity<CartResponse> addCartItem(
-            @PathVariable String username,
-            @RequestBody CartItem cartItem
-    ) {
+            @PathVariable String username, @RequestBody CartItem cartItem) {
 
         cartItem.setUsername(username);
         return new ResponseEntity<>(cartItemService.addCartItem(cartItem), HttpStatus.CREATED);
