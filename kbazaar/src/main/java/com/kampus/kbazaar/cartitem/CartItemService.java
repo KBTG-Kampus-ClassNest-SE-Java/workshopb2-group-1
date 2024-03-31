@@ -25,7 +25,8 @@ public class CartItemService {
 
     public CartResponse getCartByUsername(String username) {
         Optional<Cart> optionalCartResponse = cartRepository.getCartByUsername(username);
-        CartResponse cartResponse = new CartResponse();
+        new CartResponse();
+        CartResponse cartResponse;
         if (optionalCartResponse.isPresent()) {
             // get cart
             cartResponse = optionalCartResponse.get().toResponse();
