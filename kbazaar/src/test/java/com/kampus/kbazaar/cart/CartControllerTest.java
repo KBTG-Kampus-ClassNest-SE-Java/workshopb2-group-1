@@ -1,8 +1,6 @@
 package com.kampus.kbazaar.cart;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.kampus.kbazaar.promotion.PromotionService;
@@ -48,16 +46,16 @@ public class CartControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    public void getCards_ReturnsCorrectResponse() throws Exception {
-//        mockMvc.perform(get("/api/v1/carts").contentType(MediaType.APPLICATION_JSON))
-//                .andDo(print())
-//                .andExpect(jsonPath("$.username").value("TechNinja"))
-//                .andExpect(jsonPath("$.items").isArray())
-//                .andExpect(jsonPath("$.discount").value(0))
-//                .andExpect(jsonPath("$.totalDiscount").value(0))
-//                .andExpect(jsonPath("$.subtotal").value(1))
-//                .andExpect(jsonPath("$.grandTotal").value(1))
-//                .andExpect(status().isOk());
-//    }
+    //    @Test
+    //    public void getCards_ReturnsCorrectResponse() throws Exception {
+    //        mockMvc.perform(get("/api/v1/carts").contentType(MediaType.APPLICATION_JSON))
+    //                .andDo(print())
+    //                .andExpect(jsonPath("$.username").value("TechNinja"))
+    //                .andExpect(jsonPath("$.items").isArray())
+    //                .andExpect(jsonPath("$.discount").value(0))
+    //                .andExpect(jsonPath("$.totalDiscount").value(0))
+    //                .andExpect(jsonPath("$.subtotal").value(1))
+    //                .andExpect(jsonPath("$.grandTotal").value(1))
+    //                .andExpect(status().isOk());
+    //    }
 }
