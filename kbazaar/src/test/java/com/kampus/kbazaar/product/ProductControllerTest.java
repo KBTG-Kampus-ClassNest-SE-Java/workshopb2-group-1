@@ -31,7 +31,7 @@ import org.springframework.test.web.servlet.MockMvc;
                 @ComponentScan.Filter(
                         type = FilterType.ASSIGNABLE_TYPE,
                         classes = JwtAuthFilter.class))
-public class ProductControllerTest {
+class ProductControllerTest {
 
     @Autowired private MockMvc mockMvc;
 
@@ -44,7 +44,7 @@ public class ProductControllerTest {
 
     @Test
     @DisplayName("should return all product")
-    public void shouldReturnAllProduct() throws Exception {
+    void shouldReturnAllProduct() throws Exception {
         // Given
 
         // When & Then
@@ -58,7 +58,7 @@ public class ProductControllerTest {
 
     @Test
     @DisplayName("should return product")
-    public void shouldReturnProduct() throws Exception {
+    void shouldReturnProduct() throws Exception {
         // Given
         String sku = "PROMO-1";
 

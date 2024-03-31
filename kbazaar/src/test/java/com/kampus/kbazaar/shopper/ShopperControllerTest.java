@@ -32,7 +32,7 @@ import org.springframework.test.web.servlet.MockMvc;
                 @ComponentScan.Filter(
                         type = FilterType.ASSIGNABLE_TYPE,
                         classes = JwtAuthFilter.class))
-public class ShopperControllerTest {
+class ShopperControllerTest {
 
     @Autowired private MockMvc mockMvc;
 
@@ -45,7 +45,7 @@ public class ShopperControllerTest {
 
     @Test
     @DisplayName("should return all users")
-    public void getAllUsers_ShouldReturnAllUsers() throws Exception {
+    void getAllUsers_ShouldReturnAllUsers() throws Exception {
         // Given
 
         // When & Then
@@ -59,7 +59,7 @@ public class ShopperControllerTest {
 
     @Test
     @DisplayName("should return shopper response")
-    public void shouldReturnShopperResponse() throws Exception {
+    void shouldReturnShopperResponse() throws Exception {
         // Given
         String username = "cat";
 
