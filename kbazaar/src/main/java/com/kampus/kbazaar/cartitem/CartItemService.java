@@ -6,10 +6,15 @@ import com.kampus.kbazaar.cart.CartResponse;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CartItemService {
+
+    @Value("${enabled.shipping.fee:false}")
+    private boolean enableShippingFee;
 
     private final CartItemRepository cartItemRepository;
     private final CartRepository cartRepository;
@@ -46,8 +51,18 @@ public class CartItemService {
                             .map(BigDecimal::new)
                             .reduce(BigDecimal.ZERO, BigDecimal::add));
 
+            // shipping fee
+            if (enableShippingFee) {
+                cartResponse.setShippingFee(BigDecimal.valueOf(25));
+            } else {
+                cartResponse.setShippingFee(BigDecimal.valueOf(0));
+            }
+
             cartResponse.setGrandTotal(
-                    cartResponse.getSubtotal().subtract(cartResponse.getTotalDiscount()));
+                    cartResponse.getSubtotal()
+                            .subtract(cartResponse.getTotalDiscount())
+                            .add(cartResponse.getShippingFee())
+            );
 
         } else {
             Cart cart = new Cart();

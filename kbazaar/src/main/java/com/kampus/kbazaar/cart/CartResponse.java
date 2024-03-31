@@ -20,5 +20,5 @@ public class CartResponse {
     private BigDecimal subtotal;
     private BigDecimal grandTotal;
     private String promotionCodes;
-    private double shippingFee;
+    private BigDecimal shippingFee;
 }
