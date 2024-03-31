@@ -1,7 +1,6 @@
 package com.kampus.kbazaar.cart;
 
 import com.kampus.kbazaar.promotion.PromotionApplyCartRequest;
-import java.util.Collections;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +17,7 @@ public class CartController {
 
     @GetMapping("/carts")
     public ResponseEntity<List<CartResponse>> getCart() {
-        //            List<CartResponse> carts = cartService.getAllCart();
-        return ResponseEntity.ok(Collections.emptyList());
+        return ResponseEntity.ok(cartService.getAllCart());
     }
 
     @PostMapping("/carts/{username}/promotions")
