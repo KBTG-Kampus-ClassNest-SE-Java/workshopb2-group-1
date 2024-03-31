@@ -19,8 +19,6 @@ public class PromotionService {
 
     private final CartItemService cartItemService;
 
-    private final CartRepository cartRepository;
-
     public PromotionService(
             PromotionRepository promotionRepository,
             CartItemRepository cartItemRepository,
@@ -28,7 +26,6 @@ public class PromotionService {
             CartItemService cartItemService) {
         this.promotionRepository = promotionRepository;
         this.cartItemRepository = cartItemRepository;
-        this.cartRepository = cartRepository;
         this.cartItemService = cartItemService;
     }
 
@@ -57,8 +54,6 @@ public class PromotionService {
             }
         }
 
-        CartResponse response = cartItemService.getCartByUsername(username);
-
-        return response;
+        return cartItemService.getCartByUsername(username);
     }
 }
