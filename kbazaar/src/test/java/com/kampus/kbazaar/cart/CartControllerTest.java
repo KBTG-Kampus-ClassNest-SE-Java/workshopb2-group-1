@@ -1,5 +1,6 @@
 package com.kampus.kbazaar.cart;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -7,6 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.kampus.kbazaar.promotion.PromotionService;
 import com.kampus.kbazaar.security.JwtAuthFilter;
+import java.math.BigDecimal;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -48,16 +51,29 @@ public class CartControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    public void getCards_ReturnsCorrectResponse() throws Exception {
-//        mockMvc.perform(get("/api/v1/carts").contentType(MediaType.APPLICATION_JSON))
-//                .andDo(print())
-//                .andExpect(jsonPath("$.username").value("TechNinja"))
-//                .andExpect(jsonPath("$.items").isArray())
-//                .andExpect(jsonPath("$.discount").value(0))
-//                .andExpect(jsonPath("$.totalDiscount").value(0))
-//                .andExpect(jsonPath("$.subtotal").value(1))
-//                .andExpect(jsonPath("$.grandTotal").value(1))
-//                .andExpect(status().isOk());
-//    }
+    @Test
+    public void getCards_ReturnsCorrectResponse() throws Exception {
+        when(cartService.getAllCart())
+                .thenReturn(
+                        List.of(
+                                CartResponse.builder()
+                                        .username("TechNinja")
+                                        .discount(BigDecimal.valueOf(0))
+                                        .totalDiscount(BigDecimal.valueOf(0))
+                                        .subtotal(BigDecimal.valueOf(1))
+                                        .grandTotal(BigDecimal.valueOf(1))
+                                        .items(List.of())
+                                        .build()));
+
+        mockMvc.perform(get("/api/v1/carts").contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(jsonPath("$.length()").value(1))
+                .andExpect(jsonPath("$[0].username").value("TechNinja"))
+                .andExpect(jsonPath("$[0].items").isArray())
+                .andExpect(jsonPath("$[0].discount").value(0))
+                .andExpect(jsonPath("$[0].totalDiscount").value(0))
+                .andExpect(jsonPath("$[0].subtotal").value(1))
+                .andExpect(jsonPath("$[0].grandTotal").value(1))
+                .andExpect(status().isOk());
+    }
 }
