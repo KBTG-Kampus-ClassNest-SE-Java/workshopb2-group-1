@@ -1,6 +1,5 @@
 package com.kampus.kbazaar.promotion;
 
-import com.kampus.kbazaar.cart.CartRepository;
 import com.kampus.kbazaar.cart.CartResponse;
 import com.kampus.kbazaar.cartitem.CartItem;
 import com.kampus.kbazaar.cartitem.CartItemRepository;
@@ -22,7 +21,6 @@ public class PromotionService {
     public PromotionService(
             PromotionRepository promotionRepository,
             CartItemRepository cartItemRepository,
-            CartRepository cartRepository,
             CartItemService cartItemService) {
         this.promotionRepository = promotionRepository;
         this.cartItemRepository = cartItemRepository;

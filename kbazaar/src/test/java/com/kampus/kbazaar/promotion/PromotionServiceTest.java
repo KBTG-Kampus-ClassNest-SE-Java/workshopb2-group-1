@@ -89,10 +89,7 @@ class PromotionServiceTest {
         // Mock repository method returning empty optional
         PromotionService productService =
                 new PromotionService(
-                        promotionRepository,
-                        mockCartItemRepository,
-                        mockCartRepository,
-                        mockCartItemService);
+                        promotionRepository, mockCartItemRepository, mockCartItemService);
 
         Long promotionId = 1L;
         String code = "SUMMER50";
