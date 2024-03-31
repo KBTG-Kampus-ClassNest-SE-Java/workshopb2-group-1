@@ -1,5 +1,6 @@
-package com.kampus.kbazaar.cart;
+package com.kampus.kbazaar.cartitem;
 
+import com.kampus.kbazaar.cartitem.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

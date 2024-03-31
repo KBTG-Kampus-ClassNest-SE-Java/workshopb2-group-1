@@ -1,6 +1,6 @@
-package com.kampus.kbazaar.cart;
+package com.kampus.kbazaar.cartitem;
 
-import com.kampus.kbazaar.product.Product;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,16 +8,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class CartResponse {
-    private String username;
-    private List<CartItem> items;
-    private double discount;
-    private double totalDiscount;
-    private int subtotal;
-    private int grandTotal;
 
-}
+
+public record CartItemResponse (
+
+    Long id,
+    String username,
+    String sku,
+    String name,
+    double price,
+    int quantity,
+    double discount,
+    String promotionCodes
+
+) {}

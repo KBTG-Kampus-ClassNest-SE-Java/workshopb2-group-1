@@ -1,5 +1,6 @@
-package com.kampus.kbazaar.cartitem;
+package com.kampus.kbazaar.cart;
 
+import com.kampus.kbazaar.cartitem.CartItemResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,5 +1,6 @@
-package com.kampus.kbazaar.cart;
+package com.kampus.kbazaar.cartitem;
 
+import com.kampus.kbazaar.product.ProductResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,4 +39,16 @@ public class CartItem {
 
     @Column(name = "promotion_codes")
     private String promotionCodes;
+
+    public CartItemResponse toResponse() {
+        return new CartItemResponse(
+                this.id,
+                this.username,
+                this.sku,
+                this.name,
+                this.price,
+                this.quantity,
+                this.discount,
+                this.promotionCodes);
+    }
 }

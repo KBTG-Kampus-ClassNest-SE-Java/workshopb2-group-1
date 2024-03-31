@@ -1,4 +1,4 @@
-package com.kampus.kbazaar.cartitem;
+package com.kampus.kbazaar.cart;
 
 import jakarta.persistence.*;
 import jdk.jfr.Description;
